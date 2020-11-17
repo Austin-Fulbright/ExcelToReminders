@@ -10,7 +10,7 @@ def sendEmail():
     Msg.Body = "This is a Test"
     Msg.Send()
 
-def sendRecurringMeeting(rec, title, date, prop, freq):    
+def sendRecurringMeeting(rec, title, date, prop, freq, occur):    
     appt = outlook.CreateItem(1) # AppointmentItem
     appt.Start = date # yyyy-MM-dd hh:mm
     appt.Subject = title
@@ -25,7 +25,7 @@ def sendRecurringMeeting(rec, title, date, prop, freq):
     pattern = appt.GetRecurrencePattern()
     pattern.RecurrenceType = 2
     pattern.Interval = freq
-    pattern.Occurrences = "5"
+    pattern.Occurrences = occur
 
     appt.Save()
     appt.Send()
@@ -33,8 +33,12 @@ def sendRecurringMeeting(rec, title, date, prop, freq):
 #setupAppointment("2020-11-28 10:10", "apt", "ajf73130@uga.edu", "my prop", 2)
 #sendRecurringMeeting("ajf73130@uga.edu","meeting","2020-11-28 10:10","my house",2)
 
-def test():
-    print("hello")
 
-
+def format_date(date): #from mm/dd/yyyy to yyyy-MM-dd hh:mm and returns date in correct format
+    mdate = date.strftime("%Y-%m-%d %H:%M")
+    return mdate
+#reminder for 2 years
+def calcOccur(freqMonths):
+    monthsC = str(int(24/freqMonths))
+    return monthsC
 
