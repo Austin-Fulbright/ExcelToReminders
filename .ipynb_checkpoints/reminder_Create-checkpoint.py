@@ -33,4 +33,8 @@ def sendRecurringMeeting(rec, title, date, prop, freq):
 #setupAppointment("2020-11-28 10:10", "apt", "ajf73130@uga.edu", "my prop", 2)
 #sendRecurringMeeting("ajf73130@uga.edu","meeting","2020-11-28 10:10","my house",2)
 
+def test():
+    print("hello")
+
+
 
